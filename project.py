@@ -19,7 +19,18 @@ from collections import OrderedDict
 fire_data = pd.read_csv('source_csv/FW_Veg_Rem_Combined.csv')
 
 # initial data exploration
+# dropping duplicate index column
+fire_data = fire_data.drop('Unnamed: 0',axis='columns')
+fire_data = fire_data.drop('Unnamed: 0.1',axis='columns')
+# print(fire_data.columns)
 
-print(fire_data.head())
-fire_data.drop('Unnamed: 0',axis=1,inplace=True)
-print(fire_data.columns)
+print(fire_data['stat_cause_descr'].unique())
+# 13 unique fire causes 
+# 'Missing/Undefined' 'Arson' 'Debris Burning' 'Miscellaneous' 'Campfire'
+# 'Fireworks' 'Children' 'Lightning' 'Equipment Use' 'Smoking' 'Railroad'
+# 'Structure' 'Powerline'
+print(fire_data['stat_cause_descr'].value_counts())
+
+
+
+
